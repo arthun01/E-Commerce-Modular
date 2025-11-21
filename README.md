@@ -172,3 +172,89 @@ Item (0): TV: Samsung 55 | R$ 3000.0
 ...
 TOTAL A PAGAR: R$ X.XXX
 ```
+
+___
+
+### Diagrama do Projeto / Project Diagram
+
+```mermaid
+classDiagram
+    %% Interfaces
+    class Transportavel {
+        <<interface>>
+        +calcularFrete() double
+    }
+
+    class Tributavel {
+        <<interface>>
+        +calcularImposto() double
+    }
+
+    %% Classe Abstrata
+    class Produto {
+        <<abstract>>
+        #String nome
+        #double preco
+        -static int contadorId
+        -int id
+        +Produto(String nome, double preco)
+        +getPreco() double
+        +getId() int
+        +getEtiqueta()* String
+    }
+
+    %% Classes Concretas
+    class Celular {
+        +Celular(String nome, double preco)
+        +getEtiqueta() String
+        +calcularImposto() double
+        +calcularFrete() double
+    }
+
+    class Televisao {
+        +Televisao(String nome, double preco)
+        +getEtiqueta() String
+        +calcularImposto() double
+        +calcularFrete() double
+    }
+
+    %% Outras Classes
+    class Cliente {
+        -String nome
+        -String cpf
+        -List~Produto~ carrinho
+        +Cliente(String nome, String cpf)
+        +adicionarItem(Produto p)
+        +removerItem(int chave)
+        +getCarrinho() List~Produto~
+    }
+
+    class NotaFiscal {
+        +gerar(Cliente c) void
+    }
+
+    class TaxaInterna {
+        +static calcularIOF(double valor) double
+    }
+
+    class SistemaLoja {
+        +static main(String[] args)
+    }
+
+    %% Relacionamentos
+    %% Herança (Extends)
+    Produto <|-- Celular
+    Produto <|-- Televisao
+
+    %% Implementação (Implements)
+    Tributavel <|.. Celular
+    Transportavel <|.. Celular
+    Tributavel <|.. Televisao
+    Transportavel <|.. Televisao
+
+    %% Associação / Agregação
+    Cliente o-- "0..*" Produto : tem (carrinho)
+    NotaFiscal ..> Cliente : processa
+    SistemaLoja ..> Cliente : cria
+    SistemaLoja ..> NotaFiscal : usa
+```
