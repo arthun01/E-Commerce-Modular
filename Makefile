@@ -23,9 +23,6 @@ compile:
 
 run: compile
 	$(JAVA) -cp $(SRC_DIR) $(MAIN_CLASS)
-	@echo "--------------------------------"
-	@echo "Executando o SistemaLoja:"
-	@echo "--------------------------------"
 
 # Nota: Se estiver no Windows (cmd), troque 'rm -f' por 'del /s /q'
 clean:
