@@ -3,6 +3,7 @@ package br.com.loja.app;
 import br.com.loja.modelo.*;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -41,8 +42,9 @@ public class SistemaLoja {
       int escolha = -1;
       try {
         escolha = scanner.nextInt();
-      } catch (Exception e) {
+      } catch (InputMismatchException e) {
         System.out.println("Opção inválida. Por favor, insira um valor válido.");
+        scanner.nextLine();
         continue;
       }
 
