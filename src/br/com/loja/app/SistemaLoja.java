@@ -20,16 +20,37 @@ public class SistemaLoja {
     estoque.add(new Sofa("King House", 4500.00));
 
     System.out.println("==================================================");
-    System.out.print("Bem-vindo! Insira seu nome: ");
+    System.out.print("Bem-vindo!\nInsira seu nome: ");
     String nome = scanner.nextLine();
     System.out.println();
-    System.out.print("Agora insira seu CPF: ");
-    String cpf = scanner.nextLine();
+
+    // inserir e verificar cpf
+    String cpf = "";
+    while(true){
+      System.out.print("Agora insira seu CPF: ");
+      cpf = scanner.nextLine();
+
+      // verificando a validade do cpf (se é só números)
+      if(!cpf.matches("[0-9]+")){
+        System.out.println("X Erro: O CPF deve conter apenas números! Tente novamente.");
+        continue;
+      }
+
+      // verificando a validade do cpf (se tem exatamente 11 dígitos)
+      if(cpf.length() != 11){
+        System.out.println("X Erro: O CPF deve conter exatamente 11 dígitos! Tente novamente.");
+        continue;
+      }
+
+      // se ta tudo certo sai do loop
+      break;
+    }
 
     Cliente cliente = new Cliente(nome, cpf);
 
     boolean continuarComprando = true;
     while (continuarComprando) {
+      System.out.println("==================================");
       System.out.println("\nProdutos disponíveis no estoque: ");
       for (int i = 0; i < estoque.size(); i++) {
         Produto p = estoque.get(i);
@@ -37,7 +58,7 @@ public class SistemaLoja {
       }
       System.out.println(estoque.size() + " - Finalizar Compra");
       System.out.print(
-          "Digite o número do produto que deseja adicionar ao carrinho ou" + estoque.size() + " para finalizar: ");
+          "Digite o número do produto que deseja adicionar ao carrinho ou " + estoque.size() + " para finalizar: ");
 
       int escolha = -1;
       try {
