@@ -41,6 +41,11 @@ public class SistemaLoja {
         System.out.println("X Erro: O CPF deve conter exatamente 11 dígitos! Tente novamente.");
         continue;
       }
+        // verificando a validade do cpf (se é um cpf válido)
+        if(!Cliente.CPFValido(cpf)){
+          System.out.println("X Erro: CPF inválido! Tente novamente.");
+          continue;
+        }
 
       // se ta tudo certo sai do loop
       break;
