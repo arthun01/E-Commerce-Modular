@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 import br.com.loja.financeiro.NotaFiscal;
 
+import static java.lang.String.format;
+
 public class SistemaLoja {
   public static void main(String[] args) {
 
@@ -59,11 +61,11 @@ public class SistemaLoja {
       System.out.println("\nProdutos disponíveis no estoque: ");
       for (int i = 0; i < estoque.size(); i++) {
         Produto p = estoque.get(i);
-        System.out.println(i + " - " + p.getNome() + " (R$ " + String.format("%.2f", p.getPreco()) + ")");
+        // uso de import static
+        System.out.println(i + " - " + p.getNome() + " (R$ " + format("%.2f", p.getPreco()) + ")");
       }
       System.out.println(estoque.size() + " - Finalizar Compra");
-      System.out.print(
-          "Digite o número do produto que deseja adicionar ao carrinho ou " + estoque.size() + " para finalizar: ");
+      System.out.print("Digite o número do produto que deseja adicionar ao carrinho ou " + estoque.size() + " para finalizar: ");
 
       int escolha = -1;
       try {
@@ -90,7 +92,7 @@ public class SistemaLoja {
       System.out.println("Seu carrinho está vazio.");
     } else {
       for (Produto p : cliente.getCarrinho()) {
-        System.out.println("- " + p.getNome() + " (R$ " + String.format("%.2f", p.getPreco()) + ")");
+        System.out.println("- " + p.getNome() + " (R$ " + format("%.2f", p.getPreco()) + ")");
       }
     }
 
