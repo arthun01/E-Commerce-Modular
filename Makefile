@@ -32,3 +32,8 @@ clean:
 	rm -f $(SRC_DIR)/br/com/loja/app/*.class
 	rm -f $(SRC_DIR)/br/com/loja/interfaces/*.class
 	@echo "Limpeza concluida."
+
+doc:
+	@echo "Gerando documentacao Javadoc..."
+	javadoc -d doc -sourcepath $(SRC_DIR) -subpackages br.com.loja
+	@echo "Documentacao gerada com sucesso! Abra doc/index.html para ver."
