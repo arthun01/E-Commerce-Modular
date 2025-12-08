@@ -4,10 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.InputMismatchException;
 
+/**
+ * Representa um consumidor no sistema de e-commerce.
+ * <p>
+ * Esta classe é responsável por armazenar os dados pessoais do cliente (Nome e CPF)
+ * e gerenciar o seu carrinho de compras. Além disso, fornece utilitários estáticos
+ * para a validação de documentos (CPF) seguindo as regras da Receita Federal.
+ * </p>
+ *
+ * @author Grupo Java
+ * @version 1.0
+ * @see Produto
+ */
+
 public class Cliente{
     private String nome;
     private String cpf;
     private List<Produto> carrinho;
+
+    /**
+     * Construtor padrão do Cliente.
+     * <p>
+     * Inicializa o cliente com seus dados básicos e instancia uma lista vazia
+     * para o carrinho de compras.
+     * </p>
+     * * @param nome O nome do cliente.
+     * @param cpf O CPF (Cadastro de Pessoas Físicas) do cliente.
+     */
 
     public Cliente(String nome, String cpf){
         this.nome = nome;
@@ -23,20 +46,51 @@ public class Cliente{
         return this.cpf;
     }
 
+
+    /**
+     * Adiciona um produto ao carrinho de compras do cliente.
+     * * @param p O objeto {@link Produto} a ser adicionado.
+     */
+
     public void adicionarItem(Produto p){
         this.carrinho.add(p);
         System.out.println(p.nome + " adicionado ao carrinho de " + this.nome);
     }
+    
+    /**
+     * Remove um produto do carrinho de compras do cliente com base na chave (índice).
+     * * @param chave O índice (posição na lista) do produto a ser removido.
+     */
 
     public void removerItem(int chave){
         this.carrinho.remove(chave);
     }
 
+    /**
+     * Retorna a lista de produtos atual no carrinho de compras do cliente.
+     * * @return Uma lista contendo os objetos {@link Produto} no carrinho.
+     */
+
     public List<Produto> getCarrinho(){
         return this.carrinho;
     }
 
-    // metodo para validar cpf
+    /**
+     * Realiza a validação matemática de um CPF brasileiro.
+     * <p>
+     * O algoritmo executa os seguintes passos:
+     * <ul>
+     * <li>Remove caracteres não numéricos (pontos e traços).</li>
+     * <li>Verifica se é uma sequência de números iguais (ex: 11111111111), que são inválidos.</li>
+     * <li>Calcula o primeiro dígito verificador baseado nos 9 primeiros números.</li>
+     * <li>Calcula o segundo dígito verificador baseado nos 10 primeiros números.</li>
+     * <li>Compara os dígitos calculados com os informados.</li>
+     * </ul>
+     * </p>
+     * * @param cpf A string contendo o CPF a ser validado.
+     * @return {@code true} se o CPF for válido, {@code false} caso contrário.
+     */
+
     public static boolean CPFValido(String cpf) {
         // para remover caracteres não numéricos
         cpf = cpf.replace(".", "").replace("-", "");

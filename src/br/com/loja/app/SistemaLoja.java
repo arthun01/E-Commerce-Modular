@@ -11,7 +11,37 @@ import br.com.loja.financeiro.NotaFiscal;
 
 import static java.lang.String.format;
 
+/**
+ * Classe principal responsável pela execução e orquestração do sistema de e-commerce.
+ * <p>
+ * Esta classe atua como o ponto de entrada da aplicação (Front-end via Console).
+ * Ela gerencia a interação com o usuário, mantém o fluxo de validação de dados
+ * (como CPF) e controla o loop de adição de produtos ao carrinho antes de
+ * solicitar a emissão da nota fiscal.
+ * </p>
+ *
+ * @author Grupo Java
+ * @version 1.0
+ * @see Cliente
+ * @see Produto
+ * @see NotaFiscal
+ */
+
 public class SistemaLoja {
+
+  /**
+   * Método de execução principal da aplicação.
+   * <p>
+   * O fluxo de execução segue as seguintes etapas:
+   * <ul>
+   * <li>Inicializa o estoque da loja com produtos pré-definidos (Polimorfismo).</li>
+   * <li>Coleta e valida os dados do comprador (Nome e CPF) através de loops de verificação.</li>
+   * <li>Apresenta o catálogo de produtos e permite a adição interativa ao carrinho.</li>
+   * <li>Finaliza a compra acionando a classe {@link NotaFiscal} para cálculos tributários.</li>
+   * </ul>
+   * </p>
+   * * @param args Argumentos de linha de comando (não utilizados nesta versão).
+   */
   public static void main(String[] args) {
 
     Scanner scanner = new Scanner(System.in);
@@ -32,7 +62,7 @@ public class SistemaLoja {
       System.out.print("Agora insira seu CPF: ");
       cpf = scanner.nextLine();
 
-      // verificando a validade do cpf (se é só números)
+      // verificando a validade do cpf (se são só números)
       if(!cpf.matches("[0-9]+")){
         System.out.println("X Erro: O CPF deve conter apenas números! Tente novamente.");
         continue;
@@ -49,7 +79,7 @@ public class SistemaLoja {
           continue;
         }
 
-      // se ta tudo certo sai do loop
+      // se estiver tudo certo sai do loop
       break;
     }
 
