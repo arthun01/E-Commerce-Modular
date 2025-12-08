@@ -16,6 +16,7 @@ O sistema gerencia clientes, carrinhos de compras e gera notas fiscais calculand
 ### 🚀 Tecnologias e Conceitos
 
   * **Java (JDK)**
+  * **Javadoc** (Documentação do código-fonte)
   * **Make** (Automação de compilação)
   * **POO:** Herança, Polimorfismo, Encapsulamento e Abstração.
   * **Interfaces:** Para contratos de cálculo de impostos e frete.
@@ -53,6 +54,10 @@ Abra o terminal na raiz do projeto e execute:
 3.  **Limpar arquivos compilados (.class):**
     ```bash
     make clean
+    ```
+4.  **Gerar Documentação (doc)**
+    ```bash
+    make doc
     ```
 
 #### Compilação Manual (Sem Make)
@@ -102,6 +107,7 @@ The system manages clients and shopping carts, automatically generating invoices
 ### 🚀 Technologies & Concepts
 
   * **Java (JDK)**
+  * **Javadoc** (Source code documentation)
   * **Make** (Build automation)
   * **OOP:** Inheritance, Polymorphism, Encapsulation, and Abstraction.
   * **Interfaces:** Contracts for tax and shipping calculations.
@@ -139,6 +145,10 @@ Open your terminal in the project root and run:
 3.  **Clean compiled files (.class):**
     ```bash
     make clean
+    ```
+4. **Generate Documentation (doc)**
+    ```bash
+    make doc
     ```
 
 #### Manual Compilation (Without Make)

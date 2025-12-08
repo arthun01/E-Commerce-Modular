@@ -58,7 +58,7 @@ public class NotaFiscal{
       if (p instanceof Tributavel){
         double imposto = ((Tributavel) p).calcularImposto();
         valorItem += imposto;
-        System.out.println(" + Imposto: R$ " + imposto);
+        System.out.println(" + Imposto: R$ " + format("%.2f", imposto));
 
         double iof = TaxaInterna.calcularIOF(valorItem);
         valorItem += iof;
@@ -68,16 +68,16 @@ public class NotaFiscal{
       if (p instanceof Transportavel){
         double frete = ((Transportavel) p).calcularFrete();
         valorItem += frete;
-        System.out.println(" + Frete: R$ " + frete);
+        System.out.println(" + Frete: R$ " + format("%.2f", frete));
       }
 
-      System.out.println(" = Subtotal: R$ " + valorItem);
+      System.out.println(" = Subtotal: R$ " + format("%.2f", valorItem));
       System.out.println("---------------------------------");
 
       totalGeral += valorItem;
     }
 
-    System.out.println("TOTAL A PAGAR: R$ " + totalGeral);
+    System.out.println("TOTAL A PAGAR: R$ " + format("%.2f", totalGeral));
     System.out.println("=================================");
   }
 }
