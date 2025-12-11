@@ -50,7 +50,7 @@ public class Sofa extends Produto implements Tributavel, Transportavel{
     /**
      * Calcula o valor do frete para o transporte do sofa.
      * <p>
-     * Regra de negócio: Celulares possuem frete fixo devido ao seguro de transporte.
+     * Regra de negócio: Sofas possuem frete fixo devido ao seguro de transporte.
      * </p>
      * * @return O valor fixo de R$ 25.00.
      */
